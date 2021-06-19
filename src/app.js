@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { ApolloServer } from 'apollo-server-express';
 import { join } from 'path';
 import { graphqlUploadExpress } from 'graphql-upload';
+import path from 'path';
 
 import {
   PORT,
@@ -11,6 +12,7 @@ import {
   BASE_URL,
   MONGODB_URI,
   MONGODB_PASSWORD,
+  NODE_ENV,
 } from './config';
 
 import * as models from './models';
@@ -56,6 +58,18 @@ const startApp = async () => {
       message: 'Successfully connected to database',
       badge: true,
     });
+
+    if (NODE_ENV === 'production') {
+      app.use(express.static('client/build'));
+
+      app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+      });
+    } else {
+      app.get('/', (req, res) => {
+        res.send('Application running on development...');
+      });
+    }
 
     // 2. start Apollo-Express-Server
     server.applyMiddleware({ app, path: '/api', cors: true });

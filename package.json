@@ -6,7 +6,8 @@
   "author": "Mohammed Hassad",
   "scripts": {
     "dev": "nodemon -r esm .",
-    "start": "node -r esm ."
+    "start": "node -r esm .",
+    "heroku-postbuild": "cd client && yarn install && INLINE_RUNTIME_CHUNK=false yarn build"
   },
   "dependencies": {
     "apollo-server-express": "^2.23.0",
