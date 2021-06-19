@@ -6,7 +6,13 @@ import { join } from 'path';
 import { graphqlUploadExpress } from 'graphql-upload';
 import path from 'path';
 
-import { BASE_URL, MONGODB_URI, MONGODB_PASSWORD, NODE_ENV } from './config';
+import {
+  BASE_URL,
+  MONGODB_URI,
+  MONGODB_PASSWORD,
+  NODE_ENV,
+  PORT,
+} from './config';
 
 import * as models from './models';
 import AuthMiddleware from './middlewares/auth';
@@ -52,7 +58,7 @@ const startApp = async () => {
       badge: true,
     });
 
-    if (process.env.NODE_ENV === 'production') {
+    if (NODE_ENV === 'production') {
       app.use(express.static('client/build'));
 
       app.get('*', (req, res) => {
@@ -68,7 +74,7 @@ const startApp = async () => {
     server.applyMiddleware({ app, path: '/api', cors: true });
 
     // 3. Start the server on a particular port
-    app.listen(process.env.PORT || 5000, () => {
+    app.listen(PORT || 5000, () => {
       consola.success({
         message: `App running on port ${BASE_URL}`,
         badge: true,

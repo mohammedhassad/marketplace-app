@@ -1,8 +1,10 @@
 import { config } from 'dotenv';
 
-const { parsed } = config();
+config();
 
 export const {
+  PORT,
+  NODE_ENV,
   MONGODB_PASSWORD,
   MONGODB_URI,
   LOCAL_DB,
@@ -10,5 +12,5 @@ export const {
   JWT_EXPIRES_IN,
   JWT_COOKIE_EXPIRES_IN,
   IN_PROD = NODE_ENV === 'production',
-  BASE_URL = BASE_URL || `http://localhost:${PORT}`,
-} = parsed;
+  BASE_URL,
+} = process.env;
