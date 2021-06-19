@@ -75,7 +75,7 @@ const startApp = async () => {
     server.applyMiddleware({ app, path: '/api', cors: true });
 
     // 3. Start the server on a particular port
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || PORT, () => {
       consola.success({
         message: `App running on port ${BASE_URL}`,
         badge: true,
