@@ -6,14 +6,7 @@ import { join } from 'path';
 import { graphqlUploadExpress } from 'graphql-upload';
 import path from 'path';
 
-import {
-  PORT,
-  LOCAL_DB,
-  BASE_URL,
-  MONGODB_URI,
-  MONGODB_PASSWORD,
-  NODE_ENV,
-} from './config';
+import { BASE_URL, MONGODB_URI, MONGODB_PASSWORD, NODE_ENV } from './config';
 
 import * as models from './models';
 import AuthMiddleware from './middlewares/auth';
@@ -74,8 +67,9 @@ const startApp = async () => {
     // 2. start Apollo-Express-Server
     server.applyMiddleware({ app, path: '/api', cors: true });
 
+    console.log(process.env.PORT);
     // 3. Start the server on a particular port
-    app.listen(process.env.PORT || PORT, () => {
+    app.listen(process.env.PORT || 5000, () => {
       consola.success({
         message: `App running on port ${BASE_URL}`,
         badge: true,

@@ -3,7 +3,6 @@ import { config } from 'dotenv';
 const { parsed } = config();
 
 export const {
-  PORT = 5000,
   NODE_ENV,
   MONGODB_PASSWORD,
   MONGODB_URI,
