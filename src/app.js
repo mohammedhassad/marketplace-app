@@ -67,7 +67,6 @@ const startApp = async () => {
     // 2. start Apollo-Express-Server
     server.applyMiddleware({ app, path: '/api', cors: true });
 
-    console.log(process.env.PORT);
     // 3. Start the server on a particular port
     app.listen(process.env.PORT || 5000, () => {
       consola.success({
