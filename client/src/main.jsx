@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
-
-import App from './App';
-import './assets/css/output.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App.jsx';
+import './index.css';
 
 const httpLink = createUploadLink({
   uri: '/api',
@@ -30,14 +29,12 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
 });
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Router>
         <App />
       </Router>
     </ApolloProvider>
-  </React.StrictMode>,
-
-  document.getElementById('root')
+  </React.StrictMode>
 );

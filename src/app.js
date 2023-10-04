@@ -22,6 +22,8 @@ import { formatError } from './functions';
 // Initialize the App
 const app = express();
 
+const root = join(__dirname, '..', 'client', 'dist');
+
 // Setting up the middlewares
 app.use(graphqlUploadExpress());
 app.use(express.static(join(__dirname, './uploads')));
@@ -59,10 +61,10 @@ const startApp = async () => {
     });
 
     if (NODE_ENV === 'production') {
-      app.use(express.static('client/build'));
+      app.use(express.static(root));
 
       app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+        res.sendFile('index.html', { root });
       });
     } else {
       app.get('/', (req, res) => {

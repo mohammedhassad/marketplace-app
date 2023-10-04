@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { useState, useEffect, useRef } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
-import { GET_PRODUCT } from "../../../graphql/queries";
-import { UPDATE_PRODUCT } from "../../../graphql/mutations";
-import Button from "../../UI/Button";
-import ProductForm from "./Form";
-import Alert from "../../UI/Alert";
+import { GET_PRODUCT } from '@/graphql/queries';
+import { UPDATE_PRODUCT } from '@/graphql/mutations';
+import Button from '@/UI/Button';
+import ProductForm from './Form';
+import Alert from '@/UI/Alert';
 
 const initialValues = {
-  name: "",
-  description: "",
-  category: "",
-  quantity: "",
-  price: "",
+  name: '',
+  description: '',
+  category: '',
+  quantity: '',
+  price: '',
   image: {},
 };
 
@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
 function ProductFormEdit() {
   const { shopId, productId } = useParams();
   const formikRef = useRef();
-  const [alert, setAlert] = useState({ message: "", variant: "" });
+  const [alert, setAlert] = useState({ message: '', variant: '' });
   const { loading, data, refetch } = useQuery(GET_PRODUCT, {
     variables: { productId: productId },
   });
@@ -41,12 +41,12 @@ function ProductFormEdit() {
     const { current } = formikRef;
 
     if (data && data.getProduct && !loading) {
-      current.setFieldValue("name", data.getProduct.name);
-      current.setFieldValue("description", data.getProduct.description);
-      current.setFieldValue("category", data.getProduct.category);
-      current.setFieldValue("quantity", data.getProduct.quantity);
-      current.setFieldValue("price", data.getProduct.price);
-      current.setFieldValue("image.name", data.getProduct.image);
+      current.setFieldValue('name', data.getProduct.name);
+      current.setFieldValue('description', data.getProduct.description);
+      current.setFieldValue('category', data.getProduct.category);
+      current.setFieldValue('quantity', data.getProduct.quantity);
+      current.setFieldValue('price', data.getProduct.price);
+      current.setFieldValue('image.name', data.getProduct.image);
     }
   }, [data, loading]);
 
@@ -67,8 +67,8 @@ function ProductFormEdit() {
       if (data) {
         refetch();
         setAlert({
-          message: "Product Updated successfully!",
-          variant: "success",
+          message: 'Product Updated successfully!',
+          variant: 'success',
         });
       }
     } catch (err) {
@@ -76,7 +76,7 @@ function ProductFormEdit() {
         const { graphQLErrors } = err;
         const { extensions, message } = graphQLErrors[0];
 
-        setAlert({ message: message, variant: "danger" });
+        setAlert({ message: message, variant: 'danger' });
 
         if (extensions) {
           const { error: validationError } = extensions;
@@ -113,10 +113,10 @@ function ProductFormEdit() {
             <ProductForm />
 
             {/* Save Changes */}
-            <div className="flex items-center w-full pt-3">
+            <div className="flex items-center justify-end w-full mt-6">
               <Button
                 type="submit"
-                className="!flex bg-info hover:bg-info-dark text-white"
+                className="flex bg-primary hover:bg-primary-dark text-white"
               >
                 Save Changes
               </Button>

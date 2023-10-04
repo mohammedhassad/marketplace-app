@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { LIST_RELATED_PRODUCTS } from "../../graphql/queries";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { LIST_RELATED_PRODUCTS } from '@/graphql/queries';
 
 function ProductRelated() {
   const { productId } = useParams();
@@ -18,13 +18,17 @@ function ProductRelated() {
     }
   }, [data, loading, refetch]);
 
+  if (!data) {
+    return;
+  }
+
   return (
     <div
-      className={`related-products bg-white rounded-lg shadow-lg py-10 mt-12 ${
-        !products && "hidden"
+      className={`related-products bg-white rounded-lg shadow-sm py-10 mt-12 ${
+        !products && 'hidden'
       }`}
     >
-      <h2 className="text-center text-dark-light font-bold text-xl capitalize">
+      <h2 className="text-start px-4 lg:px-8 text-dark-light font-bold text-xl capitalize">
         Related products
       </h2>
 

@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import ScreensHome from './Home';
-import ScreensProduct from './Product/Product';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import PrivateRoute from '@/components/PrivateRoute';
+import Sidebar from '@/components/Sidebar';
 import ScreensCart from './Cart';
+import ScreensHome from './Home';
 import ScreensLogin from './Login';
-import ScreensRegister from './Register';
-import ScreensShopList from './Shop/List';
-import ScreensShopMyList from './Shop/MyList';
-import ScreensProfile from './Profile/Profile';
-import ScreensProfileEdit from './Profile/Edit';
-import ScreensShop from './Shop/Shop';
-import ScreensShopEdit from './Shop/Edit';
-import ScreensShopCreate from './Shop/Create';
+import ScreensNotFound from './NotFound';
 import ScreensProductCreate from './Product/Create';
 import ScreensProductEdit from './Product/Edit';
-import Sidebar from '../components/Sidebar';
-import PrivateRoute from '../components/PrivateRoute';
-import ScreensNotFound from './NotFound';
+import ScreensProduct from './Product/Product';
+import ScreensProfileEdit from './Profile/Edit';
+import ScreensProfile from './Profile/Profile';
+import ScreensRegister from './Register';
+import ScreensShopCreate from './Shop/Create';
+import ScreensShopEdit from './Shop/Edit';
+import ScreensShopList from './Shop/List';
+import ScreensShopMyList from './Shop/MyList';
+import ScreensShop from './Shop/Shop';
 
 const ScreensRoot = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative bg-light-lightest">
+    <div className="relative bg-light">
       {/*  Sidebar  */}
       <Sidebar closeSidebar={() => setIsOpen(false)} isOpen={isOpen} />
 
@@ -44,29 +44,36 @@ const ScreensRoot = () => {
             <Route path="/login" element={<ScreensLogin />} />
             <Route path="/register" element={<ScreensRegister />} />
 
-            <PrivateRoute path="/profile/me" component={ScreensProfile} />
-            <PrivateRoute
+            <Route
+              path="/profile/me"
+              element={<PrivateRoute component={ScreensProfile} />}
+            />
+
+            <Route
               path="/profile/me/edit"
-              component={ScreensProfileEdit}
+              element={<PrivateRoute component={ScreensProfileEdit} />}
             />
 
-            <PrivateRoute
+            <Route
               path="/seller/:shopId/product/create"
-              component={ScreensProductCreate}
+              element={<PrivateRoute component={ScreensProductCreate} />}
             />
-            <PrivateRoute
+            <Route
               path="/seller/:shopId/:productId/edit"
-              component={ScreensProductEdit}
+              element={<PrivateRoute component={ScreensProductEdit} />}
             />
 
-            <PrivateRoute path="/seller/shops" component={ScreensShopMyList} />
-            <PrivateRoute
-              path="/seller/shop/create"
-              component={ScreensShopCreate}
+            <Route
+              path="/seller/shops"
+              element={<PrivateRoute component={ScreensShopMyList} />}
             />
-            <PrivateRoute
+            <Route
+              path="/seller/shop/create"
+              element={<PrivateRoute component={ScreensShopCreate} />}
+            />
+            <Route
               path="/seller/shop/:shopId/edit"
-              component={ScreensShopEdit}
+              element={<PrivateRoute component={ScreensShopEdit} />}
             />
 
             <Route path="*" element={<ScreensNotFound />} />

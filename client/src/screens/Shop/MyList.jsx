@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { isAuthenticated } from '../../components/Auth/auth-helpers';
-import { Link, Navigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GET_SHOPS } from '../../graphql/queries';
-import Button from '../../components/UI/Button';
-import ShopDelete from '../../components/Shop/Delete';
+import { useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import { isAuthenticated } from '@/components/Auth/auth-helpers';
+import ShopDelete from '@/components/Shop/Delete';
+import Button from '@/components/UI/Button';
+import { GET_SHOPS } from '@/graphql/queries';
 
 function ScreensShopMyList() {
   const [shops, setShops] = useState([]);
@@ -35,7 +35,7 @@ function ScreensShopMyList() {
       <div className="flex items-center mb-10">
         <h1 className="text-3xl font-bold capitalize text-dark">Your shops</h1>
         <Link to="/seller/shop/create" className="ml-auto">
-          <Button className="bg-info text-white hover:bg-ifo-dark !leading-7">
+          <Button className="border border-primary text-primary hover:bg-primary-light leading-7">
             <svg className="w-5 h-5 fill-current mr-3" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
@@ -51,7 +51,7 @@ function ScreensShopMyList() {
       <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-4 gap-y-8">
         {shops.map((shop, index) => (
           <div key={index}>
-            <div className="cursor-pointer bg-white flex items-center justify-center flex-col py-8 rounded-lg shadow-lg">
+            <div className="cursor-pointer bg-white flex items-center justify-center flex-col py-8 rounded-lg shadow-sm">
               <Link to={`/shops/${shop?._id}`}>
                 <div className="mb-4 w-36 h-36 rounded-full">
                   <img

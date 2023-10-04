@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { GET_PRODUCTS } from '../graphql/queries';
-import ProductSearch from '../components/Product/Search';
-import ProductLatest from '../components/Product/Latest';
-import Button from '../components/UI/Button';
-import { addItem } from '../components/Cart/cart-helpers';
+import { GET_PRODUCTS } from '@/graphql/queries';
+import ProductSearch from '@/components/Product/Search';
+import ProductLatest from '@/components/Product/Latest';
+import Button from '@/components/UI/Button';
+import { addItem } from '@/components/Cart/cart-helpers';
 
 function ScreensHome() {
   const navigate = useNavigate();
@@ -51,11 +51,11 @@ function ScreensHome() {
 
         {/* List Product */}
         <div className="mt-10">
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-4">
             {products.map((product, index) => (
               <div
                 key={index}
-                className="relative shadow-lg bg-white rounded-lg overflow-hidden z-10"
+                className="relative shadow-sm bg-white rounded-lg overflow-hidden z-10"
               >
                 <Link to={`/product/${product._id}`}>
                   <div className="overflow-hidden rounded-t-lg flex items-center justify-center md:h-56 h-64 bg-gray-100 py-2">
@@ -84,7 +84,7 @@ function ScreensHome() {
                     </span>
                     <div className="mt-1">
                       <Button
-                        className="border-2 border-primary hover:bg-primary-light text-primary !leading-5 md:w-32 w-36"
+                        className="border border-primary hover:bg-primary-light text-primary leading-5 md:w-32 w-36"
                         onClick={() => addToCart(product)}
                       >
                         <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">

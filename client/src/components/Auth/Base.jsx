@@ -1,12 +1,12 @@
-import React from "react";
-import authLogo from "../../assets/auth-logo.svg";
+import PropTypes from 'prop-types';
+import authLogo from '@/assets/auth-logo.svg';
 
 function AuthBase({ children, title }) {
   return (
     <section className="min-w-screen min-h-screen mt-12 mx-4 lg:mx-8 py-5">
-      <div className="bg-white text-dark-light rounded-3xl mx-auto shadow-xl w-full overflow-hidden max-w-[1100px]">
+      <div className="bg-white text-dark-light rounded-lg mx-auto shadow-sm w-full overflow-hidden max-w-[1100px]">
         <div className="md:flex w-full h-full">
-          <div className="hidden md:flex items-center w-1/2 bg-info py-10 px-10">
+          <div className="hidden md:flex items-center w-1/2 bg-primary py-10 px-10">
             <img src={authLogo} alt="auth logo" />
           </div>
           <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
@@ -22,5 +22,10 @@ function AuthBase({ children, title }) {
     </section>
   );
 }
+
+AuthBase.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+};
 
 export default AuthBase;

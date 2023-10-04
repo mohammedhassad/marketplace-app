@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { LIST_LATEST_PRODUCTS } from "../../graphql/queries";
-import Button from "../UI/Button";
-import { addItem } from "../Cart/cart-helpers";
+import { LIST_LATEST_PRODUCTS } from '@/graphql/queries';
+import Button from '@/UI/Button';
+import { addItem } from '@/Cart/cart-helpers';
 
 function ProductLatest() {
   const navigate = useNavigate();
@@ -31,13 +31,13 @@ function ProductLatest() {
       shop: product.shop._id,
     };
 
-    addItem(item, () => navigate("/cart"));
+    addItem(item, () => navigate('/cart'));
   };
 
   return (
     <div className="bg-white rounded-lg shadow-sm py-5 h-[850px]">
       {/* Title */}
-      <h3 className="text-lg capitalize font-bold text-dark-light px-3 mb-3">
+      <h3 className="text-lg capitalize font-bold text-dark-light px-4 lg:px-8 mb-3">
         Latest products
       </h3>
 
@@ -73,7 +73,7 @@ function ProductLatest() {
                   </span>
                   <div className="mt-1 space-x-4">
                     <Button
-                      className="!px-4 text-white bg-info hover:bg-info-dark"
+                      className="px-4 text-white bg-primary hover:bg-primary-dark"
                       onClick={() => addToCart(product)}
                     >
                       <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">

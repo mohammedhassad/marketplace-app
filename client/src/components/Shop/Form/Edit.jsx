@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { useState, useEffect, useRef } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
-import { GET_SHOP } from "../../../graphql/queries";
-import { UPDATE_SHOP } from "../../../graphql/mutations";
-import Button from "../../UI/Button";
-import Alert from "../../UI/Alert";
-import ShopForm from "./Form";
-import { useParams } from "react-router-dom";
+import { GET_SHOP } from '@/graphql/queries';
+import { UPDATE_SHOP } from '@/graphql/mutations';
+import Button from '@/UI/Button';
+import Alert from '@/UI/Alert';
+import ShopForm from './Form';
+import { useParams } from 'react-router-dom';
 
 const initialValues = {
-  name: "",
-  description: "",
+  name: '',
+  description: '',
   image: {},
 };
 
@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
 function ShopFormEdit() {
   const formikRef = useRef();
   const { shopId } = useParams();
-  const [alert, setAlert] = useState({ message: "", variant: "" });
+  const [alert, setAlert] = useState({ message: '', variant: '' });
   const { loading, data, refetch } = useQuery(GET_SHOP, {
     variables: { shopId: shopId },
   });
@@ -34,9 +34,9 @@ function ShopFormEdit() {
   useEffect(() => {
     const { current } = formikRef;
     if (data && data.getShop && !loading) {
-      current.setFieldValue("name", data.getShop.name);
-      current.setFieldValue("description", data.getShop.description);
-      current.setFieldValue("image.name", data.getShop.image);
+      current.setFieldValue('name', data.getShop.name);
+      current.setFieldValue('description', data.getShop.description);
+      current.setFieldValue('image.name', data.getShop.image);
     }
   }, [data, loading]);
 
@@ -51,7 +51,7 @@ function ShopFormEdit() {
       });
 
       if (data) {
-        setAlert({ message: "Shop Updated successfully!", variant: "success" });
+        setAlert({ message: 'Shop Updated successfully!', variant: 'success' });
         refetch();
       }
     } catch (err) {
@@ -59,7 +59,7 @@ function ShopFormEdit() {
         const { graphQLErrors } = err;
         const { extensions, message } = graphQLErrors[0];
 
-        setAlert({ message: message, variant: "danger" });
+        setAlert({ message: message, variant: 'danger' });
 
         if (extensions) {
           const { error: validationError } = extensions;
@@ -70,7 +70,7 @@ function ShopFormEdit() {
   };
 
   return (
-    <div className="lg:col-span-5 md:col-span-6 bg-white shadow-lg rounded-lg px-4 py-6 flex  flex-col justify-center h-[600px]">
+    <div className="lg:col-span-5 md:col-span-6 bg-white shadow-sm rounded-lg px-4 py-6 flex  flex-col justify-center h-[600px]">
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -96,10 +96,10 @@ function ShopFormEdit() {
             <ShopForm />
 
             {/* Save Changes */}
-            <div className="block w-full my-3">
+            <div className="flex items-center justify-end mt-8">
               <Button
                 type="submit"
-                className="!flex bg-info hover:bg-info-dark text-white mx-auto"
+                className="bg-primary hover:bg-primary-dark text-white"
               >
                 Save Changes
               </Button>

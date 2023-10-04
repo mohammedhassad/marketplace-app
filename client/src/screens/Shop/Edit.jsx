@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ShopFormEdit from '../../components/Shop/Form/Edit';
-import Button from '../../components/UI/Button';
+import { useEffect, useState } from 'react';
+import ShopFormEdit from '@/components/Shop/Form/Edit';
+import Button from '@/components/UI/Button';
 import { Link, useParams } from 'react-router-dom';
-import { LIST_PRODUCTS_BY_SHOP } from '../../graphql/queries';
-import ProductDelete from '../../components/Product/Delete';
+import { LIST_PRODUCTS_BY_SHOP } from '@/graphql/queries';
+import ProductDelete from '@/components/Product/Delete';
 import { useQuery } from '@apollo/client';
 
 function ScreensShopEdit() {
@@ -36,7 +36,7 @@ function ScreensShopEdit() {
           <div className="mb-10 flex items-center">
             <h1 className="font-bold text-xl text-dark capitalize">Products</h1>
             <Link to={`/seller/${shopId}/product/create`} className="ml-auto">
-              <Button className="border-primary border-2 text-primary hover:bg-primary-light">
+              <Button className="border-primary border text-primary hover:bg-primary-light">
                 <svg className="w-5 h-5 fill-current mr-3" viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
@@ -52,7 +52,7 @@ function ScreensShopEdit() {
           <div className="flex flex-col space-y-4">
             {products.map((product, index) => (
               <div key={index}>
-                <div className="bg-white shadow-md rounded-md">
+                <div className="bg-white shadow-sm rounded-lg">
                   <div className="py-3 px-2 flex items-center">
                     <Link to={`/product/${product._id}`}>
                       <div className="w-32 h-32 rounded-md overflow-hidden flex items-center justify-center flex-shrink-0 bg-gray-100 py-2">

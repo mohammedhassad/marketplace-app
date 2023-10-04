@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Formik, Field, Form } from "formik";
-import { useQuery } from "@apollo/client";
+import { useQuery } from '@apollo/client';
+import { Field, Form, Formik } from 'formik';
+import { useEffect, useState } from 'react';
 
-import Select from "../UI/Select";
-import InputSearch from "../UI/Input/Search";
-import { LIST_CATEGORIES } from "../../graphql/queries";
-import Button from "../UI/Button";
+import { LIST_CATEGORIES } from '@/graphql/queries';
+import Button from '@/UI/Button';
+import InputSearch from '@/UI/Input/Search';
+import Select from '@/UI/Select';
+
+import PropTypes from 'prop-types';
 
 const initialValues = {
-  search: "",
-  category: "all",
+  search: '',
+  category: 'all',
 };
 
 function ProductSearch({ handleFilter }) {
@@ -20,7 +22,7 @@ function ProductSearch({ handleFilter }) {
     refetch();
 
     if (data && data.listCategories && !loading) {
-      setCategories(["all", ...data.listCategories]);
+      setCategories(['all', ...data.listCategories]);
     }
   }, [data, loading, refetch]);
 
@@ -32,21 +34,25 @@ function ProductSearch({ handleFilter }) {
     <div>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form className="flex md:items-center flex-col md:flex-row py-3 lg:space-x-4 md:space-x-2 space-y-2 md:space-y-0 z-50">
-          <Field
-            name="search"
-            component={InputSearch}
-            placeholder="Search..."
-          />
+          <Field name="search">
+            {({ field, form }) => (
+              <InputSearch field={field} form={form} placeholder="Search..." />
+            )}
+          </Field>
 
           {/* Category */}
           <div className="flex items-center space-x-4 md:space-x-2">
             <div className="w-72 z-50">
-              <Field name="category" component={Select} items={categories} />
+              <Field name="category">
+                {({ field, form }) => (
+                  <Select field={field} form={form} items={categories} />
+                )}
+              </Field>
             </div>
 
             <Button
               tupe="submit"
-              className="relative mt-1 !leading-7 bg-info text-white hover:bg-info-dark"
+              className="relative min-w-[150px] leading-7 bg-primary text-white hover:bg-primary-dark"
             >
               Search
             </Button>
@@ -58,5 +64,9 @@ function ProductSearch({ handleFilter }) {
     </div>
   );
 }
+
+ProductSearch.propTypes = {
+  handleFilter: PropTypes.func,
+};
 
 export default ProductSearch;

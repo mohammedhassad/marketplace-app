@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import AuthBase from '../components/Auth/Base';
-import AuthFormRegister from '../components/Auth/Form/Register';
+import { useEffect } from 'react';
+import AuthBase from '@/components/Auth/Base';
+import AuthFormRegister from '@/components/Auth/Form/Register';
 
 function ScreensRegister() {
   useEffect(() => {

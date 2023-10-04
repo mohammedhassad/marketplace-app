@@ -1,15 +1,14 @@
-import React from "react";
-import { Field } from "formik";
+import { Field } from 'formik';
 
 function UploadPhoto() {
   const handleFileChange = (event, form) => {
-    form.setFieldValue("image", event.currentTarget.files[0]);
+    form.setFieldValue('image', event.currentTarget.files[0]);
   };
 
   return (
     <>
       <Field name="image">
-        {({ field, form, meta }) => (
+        {({ field, form }) => (
           <div className="mb-5 flex items-center justify-center w-full">
             <input
               id="icon-button-file"
@@ -33,7 +32,7 @@ function UploadPhoto() {
               Upload
             </label>
             <span className="ml-2 text-sm text-dark">
-              {field.value ? field.value.name : ""}
+              {field.value ? field.value.name : ''}
             </span>
           </div>
         )}

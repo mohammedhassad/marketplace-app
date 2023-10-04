@@ -1,16 +1,17 @@
-import React, { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import Button from "./UI/Button";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import Button from './UI/Button';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Sidebar({ closeSidebar, isOpen }) {
   const { pathname } = useLocation();
 
   return (
-    <Transition appear show={isOpen} as="aside">
+    <Transition as="aside" show={isOpen}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-50 overflow-y-auto"
+        className="fixed top-0 left-0 w-full h-full z-50 overflow-y-auto"
         onClose={closeSidebar}
       >
         <div className="min-h-screen flex">
@@ -19,12 +20,12 @@ function Sidebar({ closeSidebar, isOpen }) {
           {/* content */}
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
+            enter="transition ease-in-out duration-300 transform"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-300 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
           >
             <div className="relative bg-dark">
               <div className="flex flex-col sm:flex-row sm:justify-around">
@@ -56,9 +57,9 @@ function Sidebar({ closeSidebar, isOpen }) {
                         <Link to="/">
                           <Button
                             className={`w-full !leading-7 opacity-75 text-white !font-normal !justify-start !capitalize !text-base !shadow-none ${
-                              pathname === "/"
-                                ? "opacity-100 bg-dark-light"
-                                : "hover:opacity-100 hover:bg-dark-light"
+                              pathname === '/'
+                                ? 'opacity-100 bg-dark-light'
+                                : 'hover:opacity-100 hover:bg-dark-light'
                             }`}
                             onClick={closeSidebar}
                           >
@@ -70,9 +71,9 @@ function Sidebar({ closeSidebar, isOpen }) {
                         <NavLink to="/shops/all">
                           <Button
                             className={`w-full !leading-7 opacity-75 text-white !font-normal !justify-start !capitalize !text-base !shadow-none ${
-                              pathname === "/shops/all"
-                                ? "opacity-100 bg-dark-light"
-                                : "hover:opacity-100 hover:bg-dark-light"
+                              pathname === '/shops/all'
+                                ? 'opacity-100 bg-dark-light'
+                                : 'hover:opacity-100 hover:bg-dark-light'
                             }`}
                             onClick={closeSidebar}
                           >
@@ -91,5 +92,10 @@ function Sidebar({ closeSidebar, isOpen }) {
     </Transition>
   );
 }
+
+Sidebar.propTypes = {
+  closeSidebar: PropTypes.func,
+  isOpen: PropTypes.bool,
+};
 
 export default Sidebar;

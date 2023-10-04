@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { useLazyQuery } from '@apollo/client';
-import { LOGIN_USER } from '../../../graphql/queries';
+import { LOGIN_USER } from '@/graphql/queries';
 
-import InputField from '../../UI/Input/Field';
-import Button from '../../UI/Button';
+import InputField from '@/UI/Input/Field';
+import Button from '@/UI/Button';
 import { authenticate } from '../auth-helpers';
-import Alert from '../../UI/Alert';
+import Alert from '@/UI/Alert';
+
+import { BsInfoCircle } from 'react-icons/bs';
 
 const initialValues = {
-  email: '',
-  password: '',
+  email: 'demo@example.com',
+  password: 'unsafepassword',
 };
 
 const validationSchema = Yup.object().shape({
@@ -71,39 +73,58 @@ function AuthFormLogin() {
         validationSchema={validationSchema}
       >
         <Form className="py-5">
+          {/* Alert */}
+          <div className="rounded-md bg-primary-light p-4 mb-4">
+            <p className="flex  items-center gap-3 text-sm font-medium text-black">
+              <BsInfoCircle size={22} className="text-primary" />
+              <span>
+                Use <strong>demo@example.com</strong> and{' '}
+                <strong>unsafepassword</strong> to sign in
+              </span>
+            </p>
+          </div>
+
           {/* Email Address */}
-          <Field
-            component={InputField}
-            label={'Email address'}
-            name="email"
-            type="email"
-            placeholder={'jhonsmith@example.com'}
-            logo={
-              <svg className="w-5 h-5 text-dark-light" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z"
-                />
-              </svg>
-            }
-          />
+          <Field name="email">
+            {({ field, form }) => (
+              <InputField
+                field={field}
+                form={form}
+                type="email"
+                placeholder="demo@example.com"
+                label="Email address"
+                logo={
+                  <svg className="w-5 h-5 text-dark-light" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z"
+                    />
+                  </svg>
+                }
+              />
+            )}
+          </Field>
 
           {/* Password */}
-          <Field
-            component={InputField}
-            label={'Password'}
-            type="password"
-            placeholder={'********'}
-            name={'password'}
-            logo={
-              <svg className="w-5 h-5 text-dark-light" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"
-                />
-              </svg>
-            }
-          />
+          <Field name="password">
+            {({ field, form }) => (
+              <InputField
+                field={field}
+                form={form}
+                type="password"
+                placeholder="********"
+                label="Password"
+                logo={
+                  <svg className="w-5 h-5 text-dark-light" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"
+                    />
+                  </svg>
+                }
+              />
+            )}
+          </Field>
 
           {/* Remember me  & forget password*/}
           <div className="flex -mx-3 mb-10 items-center">
@@ -134,7 +155,7 @@ function AuthFormLogin() {
             <div className="w-full px-3">
               <Button
                 type="submit"
-                className="bg-info hover:bg-info-dak w-full text-white !leading-7"
+                className="bg-primary hover:bg-primary-dark w-full text-white !leading-7"
               >
                 login
               </Button>

@@ -1,10 +1,10 @@
-import React, { Fragment, useState } from "react";
-import { Transition, Dialog } from "@headlessui/react";
-import Button from "../UI/Button";
-import { useMutation } from "@apollo/client";
-import { DELETE_ME } from "../../graphql/mutations";
-import { clearJWT } from "../Auth/auth-helpers";
-import { useNavigate } from "react-router-dom";
+import { Fragment, useState } from 'react';
+import { Transition, Dialog } from '@headlessui/react';
+import Button from '@/UI/Button';
+import { useMutation } from '@apollo/client';
+import { DELETE_ME } from '@/graphql/mutations';
+import { clearJWT } from '@/Auth/auth-helpers';
+import { useNavigate } from 'react-router-dom';
 
 function ProfileDelete() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function ProfileDelete() {
 
       if (data) {
         setIsOpen(false);
-        clearJWT(() => navigate("/"));
+        clearJWT(() => navigate('/'));
       }
     } catch (err) {
       console.log({ ...err });
@@ -62,7 +62,7 @@ function ProfileDelete() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800 w-2/4">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                 <div className="w-full h-full text-center">
                   <div className="flex h-full flex-col justify-between">
                     <svg
@@ -97,7 +97,7 @@ function ProfileDelete() {
                       </Button>
                       <Button
                         type="button"
-                        className="text-danger bg-white hover:bg-light w-1/3"
+                        className="text-danger border border-danger bg-white hover:bg-danger-light w-1/3"
                         onClick={closeModal}
                       >
                         Cancel

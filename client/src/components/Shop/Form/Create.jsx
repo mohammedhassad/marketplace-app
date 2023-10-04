@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
-import { CREATE_SHOP } from "../../../graphql/mutations";
-import Button from "../../UI/Button";
-import Alert from "../../UI/Alert";
-import ShopForm from "./Form";
+import { CREATE_SHOP } from '@/graphql/mutations';
+import Button from '@/UI/Button';
+import Alert from '@/UI/Alert';
+import ShopForm from './Form';
 
 const initialValues = {
-  name: "",
-  description: "",
+  name: '',
+  description: '',
   image: {},
 };
 
@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function ShopFormCreate() {
-  const [alert, setAlert] = useState({ message: "", variant: "" });
+  const [alert, setAlert] = useState({ message: '', variant: '' });
   const [createShop] = useMutation(CREATE_SHOP);
 
   const handleSubmit = async (values, errors) => {
@@ -35,14 +35,14 @@ function ShopFormCreate() {
 
       if (data) {
         errors.resetForm();
-        setAlert({ message: "Shop Created successfully!", variant: "success" });
+        setAlert({ message: 'Shop Created successfully!', variant: 'success' });
       }
     } catch (err) {
       if (err.graphQLErrors[0]) {
         const { graphQLErrors } = err;
         const { extensions, message } = graphQLErrors[0];
 
-        setAlert({ message: message, variant: "danger" });
+        setAlert({ message: message, variant: 'danger' });
 
         if (extensions) {
           const { error: validationError } = extensions;
@@ -79,17 +79,17 @@ function ShopFormCreate() {
             <ShopForm />
 
             {/* Save Changes && Cacel */}
-            <div className="flex items-center w-full pt-3">
+            <div className="flex items-center justify-end w-full gap-3 mt-6">
               <Button
                 type="submit"
-                className="!flex bg-info hover:bg-info-dark text-white"
+                className="flex bg-primary hover:bg-primary-dark min-w-[150px] text-white"
               >
                 Create
               </Button>
-              <Link to="/seller/shops" className="ml-auto">
+              <Link to="/seller/shops">
                 <Button
                   type="button"
-                  className="!flex border-2 border-info hover:bg-info-light text-info"
+                  className="flex border min-w-[150px] border-primary hover:bg-primary-light text-primary"
                 >
                   Cancel
                 </Button>

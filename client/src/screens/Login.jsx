@@ -1,15 +1,14 @@
-import React, {useEffect} from "react";
-import AuthBase from "../components/Auth/Base";
-import AuthFormLogin from "../components/Auth/Form/Login";
+import { useEffect } from 'react';
+import AuthBase from '@/components/Auth/Base';
+import AuthFormLogin from '@/components/Auth/Form/Login';
 
 function ScreensLogin() {
-
   useEffect(() => {
-    document.title = "Login";
-  }, [])
+    document.title = 'Login';
+  }, []);
 
   return (
-    <AuthBase title={"Login"}>
+    <AuthBase title={'Login'}>
       <AuthFormLogin />
     </AuthBase>
   );

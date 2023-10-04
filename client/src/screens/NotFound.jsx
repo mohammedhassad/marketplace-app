@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../components/UI/Button';
+import Button from '@/components/UI/Button';
 
 const ScreensNotFound = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const ScreensNotFound = () => {
         <p className="text-dark-light text-2xl ">Page not found</p>
         <div className="mt-[15px] w-full flex gap-2">
           <Button
-            className="bg-info hover:bg-info-dark text-white"
+            className="bg-primary hover:bg-primary-dark text-white min-w-[150px]"
             onClick={(e) => {
               navigate(-1);
               e.preventDefault();
@@ -25,7 +25,7 @@ const ScreensNotFound = () => {
             Go Back
           </Button>
           <Button
-            className="bg-white hover:bg-info-light text-info"
+            className="border border-primary hover:bg-primary-light text-primary min-w-[150px]"
             onClick={(e) => {
               navigate('/');
               e.preventDefault();

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { FaTag } from 'react-icons/fa6';
 
-import Button from "../UI/Button";
-import { GET_PRODUCT } from "../../graphql/queries";
-import { addItem } from "../Cart/cart-helpers";
+import Button from '@/UI/Button';
+import { GET_PRODUCT } from '@/graphql/queries';
+import { addItem } from '@/Cart/cart-helpers';
 
 function ProductsDetails() {
   const navigate = useNavigate();
@@ -15,10 +16,10 @@ function ProductsDetails() {
   });
 
   const handleChangeQuantity = (type) => {
-    if (type === "increment")
+    if (type === 'increment')
       setQuantity((quantity) => (quantity = quantity + 1));
 
-    if (type === "decrement") {
+    if (type === 'decrement') {
       if (quantity > 1) setQuantity((quantity) => (quantity = quantity - 1));
     }
   };
@@ -35,25 +36,25 @@ function ProductsDetails() {
       shop: product.shop._id,
     };
 
-    addItem(item, () => navigate("/cart"));
+    addItem(item, () => navigate('/cart'));
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg lg:px-16 px-8 py-24 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="bg-white shadow-sm rounded-lg lg:px-16 px-8 py-24 grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* image */}
       <div className="flex items-center justify-center">
         <img
-          className="object-center object-cover"
-          src={data?.getProduct.imageUrl}
-          alt={data?.getProduct.name}
+          className="w-[340px] h-[420px] object-center object-contain"
+          src={data?.getProduct?.imageUrl}
+          alt={data?.getProduct?.name}
         />
       </div>
 
       {/* details */}
       <div className="lg:ml-6 mt-6 flex flex-col">
         <div>
-          <span className="block opacity-75 text-sm font-semibold capitalize text-dark-light">
-            <i className="fas fa-tag mr-3 transform rotate-90"></i>
+          <span className="flex items-center gap-2 opacity-75 text-sm font-semibold capitalize text-dark-light">
+            <FaTag className="transform rotate-90" />
             {data?.getProduct.category}
           </span>
           <h1 className="font-bold text-2xl text-dark capitalize">
@@ -66,10 +67,10 @@ function ProductsDetails() {
             </span>
             <span
               className={`px-5 capitalize opacity-75 text-sm font-semibold ${
-                data?.getProduct.quantity > 0 ? "text-success" : "text-danger"
+                data?.getProduct.quantity > 0 ? 'text-success' : 'text-danger'
               }`}
             >
-              {data?.getProduct.quantity > 0 ? "In Stock" : "Out Stock"}
+              {data?.getProduct.quantity > 0 ? 'In Stock' : 'Out Stock'}
             </span>
           </div>
         </div>
@@ -85,9 +86,9 @@ function ProductsDetails() {
           <div className="flex-shrink-0 flex items-center w-[80%] md:w-40">
             <Button
               className="!p-3 text-dark bg-light hover:bg-light-dark !shadow-none !rounded-r-none"
-              onClick={() => handleChangeQuantity("decrement")}
+              onClick={() => handleChangeQuantity('decrement')}
             >
-              <svg className="w-5 w-5 text-current" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-current" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M19,13H5V11H19V13Z" />
               </svg>
             </Button>
@@ -98,9 +99,9 @@ function ProductsDetails() {
             />
             <Button
               className="!p-3 text-dark bg-light hover:bg-light-dark !shadow-none !rounded-l-none"
-              onClick={() => handleChangeQuantity("increment")}
+              onClick={() => handleChangeQuantity('increment')}
             >
-              <svg className="w-5 w-5 text-current" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-current" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
@@ -110,7 +111,7 @@ function ProductsDetails() {
           </div>
 
           <Button
-            className="text-white bg-info !leading-7 w-[80%] md:w-52 hover:bg-info-dark"
+            className="text-white bg-primary leading-7 w-[80%] md:w-52 hover:bg-primary-dark"
             onClick={() => data && addToCart(data?.getProduct)}
           >
             <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">

@@ -1,8 +1,10 @@
-import React, { Fragment } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import Button from "./UI/Button";
-import { Menu, Transition } from "@headlessui/react";
-import { clearJWT, isAuthenticated } from "./Auth/auth-helpers";
+import { Fragment } from 'react';
+import cn from 'classnames';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import Button from './UI/Button';
+import { Menu, Transition } from '@headlessui/react';
+import { clearJWT, isAuthenticated } from './Auth/auth-helpers';
+import PropTypes from 'prop-types';
 
 const Header = ({ openSidebar }) => {
   const { pathname } = useLocation();
@@ -16,18 +18,32 @@ const Header = ({ openSidebar }) => {
           <li>
             <NavLink
               to="/"
-              end
-              className="font-sans w-full lg:w-auto font-medium tracking-wide inline-flex items-center justify-center px-5 text-white opacity-75 transition duration-200 hover:opacity-100 capitalize"
-              activeClassName="opacity-100"
+              className={({ isActive }) =>
+                cn(
+                  'font-sans w-full lg:w-auto font-medium tracking-wide inline-flex items-center justify-center px-5 text-white transition duration-200 capitalize',
+                  {
+                    'opacity-100': isActive,
+                    'opacity-75 hover:opacity-100': !isActive,
+                  }
+                )
+              }
             >
               home
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/shops/all"
-              className="font-sans w-full lg:w-auto font-medium tracking-wide inline-flex items-center justify-center px-5 text-white opacity-75 transition duration-200 hover:opacity-100 capitalize"
-              activeClassName="opacity-100"
+              className={({ isActive }) =>
+                cn(
+                  'font-sans w-full lg:w-auto font-medium tracking-wide inline-flex items-center justify-center px-5 text-white transition duration-200 capitalize',
+                  {
+                    'opacity-100': isActive,
+                    'opacity-75 hover:opacity-100': !isActive,
+                  }
+                )
+              }
             >
               all shops
             </NavLink>
@@ -68,7 +84,7 @@ const Header = ({ openSidebar }) => {
             <Link to="/cart">
               <Button
                 className={`!p-3 text-white bg-dark-light hover:bg-danger !rounded-full ${
-                  pathname === "/cart" && "bg-danger"
+                  pathname === '/cart' && '!bg-danger'
                 }`}
               >
                 <svg className="w-5 h-5 text-white" viewBox="0 0 24 24">
@@ -87,7 +103,7 @@ const Header = ({ openSidebar }) => {
                   <Menu.Button
                     as={Button}
                     className={`!p-3 text-white bg-dark-light hover:bg-danger !rounded-full ${
-                      open && "bg-danger"
+                      open && '!bg-danger'
                     }`}
                   >
                     <svg className="w-5 h-5 text-white" viewBox="0 0 24 24">
@@ -110,7 +126,7 @@ const Header = ({ openSidebar }) => {
                   >
                     <Menu.Items
                       static
-                      className="absolute z-50 py-4 right-0 w-56 mt-3 origin-top-right bg-white divide-y divide-light-dark rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="absolute z-[100] py-4 right-0 w-56 mt-3 origin-top-right bg-white divide-y divide-light-dark rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none "
                     >
                       {!isAuthenticated() && (
                         <div className="px-1 py-1">
@@ -119,9 +135,9 @@ const Header = ({ openSidebar }) => {
                               <Button
                                 className={`w-full !capitalize !justify-start !shadow-none mb-1
                             ${
-                              pathname === "/login"
-                                ? "bg-primary-light text-primary"
-                                : "hover:bg-primary-light hover:text-primary"
+                              pathname === '/login'
+                                ? 'bg-primary-light text-primary'
+                                : 'hover:bg-primary-light hover:text-primary'
                             }
                             `}
                               >
@@ -143,9 +159,9 @@ const Header = ({ openSidebar }) => {
                               <Button
                                 className={`w-full !capitalize !justify-start !shadow-none  mb-1
                             ${
-                              pathname === "/register"
-                                ? "bg-primary-light text-primary"
-                                : "hover:bg-primary-light hover:text-primary"
+                              pathname === '/register'
+                                ? 'bg-primary-light text-primary'
+                                : 'hover:bg-primary-light hover:text-primary'
                             }
                             `}
                               >
@@ -173,9 +189,9 @@ const Header = ({ openSidebar }) => {
                                 <Button
                                   className={`w-full !capitalize !justify-start !shadow-none  mb-1
                             ${
-                              pathname === "/profile/me"
-                                ? "bg-primary-light text-primary"
-                                : "hover:bg-primary-light hover:text-primary"
+                              pathname === '/profile/me'
+                                ? 'bg-primary-light text-primary'
+                                : 'hover:bg-primary-light hover:text-primary'
                             }
                             `}
                                 >
@@ -199,9 +215,9 @@ const Header = ({ openSidebar }) => {
                                   <Button
                                     className={`w-full !capitalize !justify-start !shadow-none  mb-1
                                       ${
-                                        pathname === "/seller/shops"
-                                          ? "bg-primary-light text-primary"
-                                          : "hover:bg-primary-light hover:text-primary"
+                                        pathname === '/seller/shops'
+                                          ? 'bg-primary-light text-primary'
+                                          : 'hover:bg-primary-light hover:text-primary'
                                       }
                                       `}
                                   >
@@ -223,13 +239,13 @@ const Header = ({ openSidebar }) => {
 
                           <div className="px-1 py-1 space-y-2">
                             <Menu.Item>
-                              {({ active }) => (
+                              {() => (
                                 <Button
                                   to="/logout"
                                   className="w-full !capitalize !justify-start !shadow-none hover:bg-primary-light hover:text-primary mt-1"
                                   onClick={() =>
                                     clearJWT(() => {
-                                      navigate("/");
+                                      navigate('/');
                                     })
                                   }
                                 >
@@ -259,6 +275,10 @@ const Header = ({ openSidebar }) => {
       </nav>
     </header>
   );
+};
+
+Header.propTypes = {
+  openSidebar: PropTypes.func,
 };
 
 export default Header;

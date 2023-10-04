@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from 'prop-types';
 
 function Textarea({ label, logo, field, form, ...rest }) {
   return (
@@ -14,8 +14,8 @@ function Textarea({ label, logo, field, form, ...rest }) {
           rows="4"
           className={`resize-none w-full leading-7 -ml-10 pl-10 pr-3 py-2 rounded-lg border-b-2 bg-light placeholder:text-dark-light text-dark-darkest ${
             form.touched[field.name] && form.errors[field.name]
-              ? "!border-danger focus:!border-info"
-              : "!border-light focus:!border-info"
+              ? '!border-danger focus:!border-info'
+              : '!border-light focus:!border-info'
           }`}
           {...field}
           {...rest}
@@ -29,5 +29,12 @@ function Textarea({ label, logo, field, form, ...rest }) {
     </div>
   );
 }
+
+Textarea.propTypes = {
+  field: PropTypes.object,
+  form: PropTypes.object,
+  label: PropTypes.string,
+  logo: PropTypes.element,
+};
 
 export default Textarea;

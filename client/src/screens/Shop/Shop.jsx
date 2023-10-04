@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_SHOP, LIST_PRODUCTS_BY_SHOP } from '../../graphql/queries';
+import { GET_SHOP, LIST_PRODUCTS_BY_SHOP } from '@/graphql/queries';
 import { Link, useParams } from 'react-router-dom';
-import Button from '../../components/UI/Button';
+import Button from '@/components/UI/Button';
 
 function ScreensShop() {
   const { shopId } = useParams();
@@ -47,7 +47,7 @@ function ScreensShop() {
     <section className="mt-12 mx-4 lg:mx-8 py-5">
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-x-4 gap-y-8">
         {/* shop info */}
-        <div className="bg-white flex items-center justify-center flex-col py-16 rounded-lg shadow-lg h-[460px]">
+        <div className="bg-white flex items-center justify-center flex-col py-16 rounded-md shadow-sm h-[460px]">
           <div className="mb-4 w-36 h-36 rounded-full">
             <img
               className="w-full h-full object-contain object-center rounded-full"
@@ -75,7 +75,7 @@ function ScreensShop() {
               {products.map((product, index) => (
                 <div
                   key={index}
-                  className="relative shadow-lg bg-white rounded-lg overflow-hidden z-10"
+                  className="relative shadow-sm bg-white rounded-md overflow-hidden z-10"
                 >
                   <Link to={`/product/${product._id}`}>
                     <div className="overflow-hidden rounded-t-lg flex items-center justify-center md:h-56 h-64 bg-gray-100 py-2">
@@ -103,7 +103,7 @@ function ScreensShop() {
                         {product.price.toFixed(2)}
                       </span>
                       <div className="mt-1">
-                        <Button className="border-2 border-primary hover:bg-primary-light text-primary !leading-5 md:w-32 w-36">
+                        <Button className="border border-primary hover:bg-primary-light text-primary !leading-5 md:w-32 w-36">
                           <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
                             <path
                               fill="currentColor"

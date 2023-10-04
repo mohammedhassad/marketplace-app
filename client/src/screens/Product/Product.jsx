@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import ProductsDetails from '../../components/Product/Details';
-import ProductRelated from '../../components/Product/Related';
+import { useEffect } from 'react';
+import ProductsDetails from '@/components/Product/Details';
+import ProductRelated from '@/components/Product/Related';
 
 function ScreensProduct() {
   useEffect(() => {

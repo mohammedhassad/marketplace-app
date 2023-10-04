@@ -1,9 +1,7 @@
-import React from "react";
+import ScreensRoot from './screens/Root';
 
-import ScreensRoot from "./screens/Root";
-
-const App = () => {
+function App() {
   return <ScreensRoot />;
-};
+}
 
 export default App;

@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
-import { Listbox, Transition } from "@headlessui/react";
+import { Fragment } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 function Select({ field, form, items }) {
   const handleChange = (value) => {
@@ -8,8 +9,8 @@ function Select({ field, form, items }) {
 
   return (
     <Listbox value={field.value} onChange={handleChange}>
-      <div className="relative mt-1">
-        <Listbox.Button className="relative w-full bg-white rounded-md pl-3 py-3 text-left cursor-pointer text-sm font-sans shadow-md text-dark">
+      <div className="relative">
+        <Listbox.Button className="relative w-full bg-white rounded-md pl-3 py-2.5 text-left cursor-pointer text-base font-sans shadow-sm text-dark-light">
           <span className="block truncate font-semibold capitalize">
             {field.value}
           </span>
@@ -35,25 +36,25 @@ function Select({ field, form, items }) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute w-full py-1 mt-1.5 overflow-y-auto bg-white rounded-md shadow-md max-h-60 text-sm font-sans">
+          <Listbox.Options className="absolute w-full py-1 mt-1.5 overflow-y-auto bg-white rounded-md shadow-md max-h-60 text-base font-sans">
             {items?.map((item, index) => (
               <Listbox.Option
                 className={({ active }) =>
                   `cursor-pointer select-none relative py-2 pl-10 pr-4 ${
                     active
-                      ? "hover:text-primary hover:bg-primary-light"
-                      : "text-dark"
+                      ? 'hover:text-primary hover:bg-primary-light'
+                      : 'text-dark-light'
                   }`
                 }
                 key={index}
                 active={({ active }) => active}
                 value={item}
               >
-                {({ selected, active }) => (
+                {({ selected }) => (
                   <>
                     <span
                       className={`block truncate capitalize ${
-                        selected ? "font-bold text-primary" : "font-semibold"
+                        selected ? 'font-bold text-primary' : 'font-semibold'
                       }`}
                     >
                       {item}
@@ -61,7 +62,7 @@ function Select({ field, form, items }) {
                     {selected ? (
                       <span
                         className={`absolute inset-y-0 flex items-center pointer-events-none left-0 pl-3 ${
-                          selected ? "text-primary" : "text-dark-light"
+                          selected ? 'text-primary' : 'text-dark-light'
                         }`}
                       >
                         <svg
@@ -72,9 +73,9 @@ function Select({ field, form, items }) {
                           aria-hidden="true"
                         >
                           <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clip-rule="evenodd"
                           ></path>
                         </svg>
                       </span>
@@ -89,5 +90,11 @@ function Select({ field, form, items }) {
     </Listbox>
   );
 }
+
+Select.propTypes = {
+  field: PropTypes.object,
+  form: PropTypes.object,
+  items: PropTypes.array,
+};
 
 export default Select;

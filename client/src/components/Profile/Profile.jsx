@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Button from "../UI/Button";
-import ProfileDelete from "./Delete";
-import { useQuery } from "@apollo/client";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Button from '@/UI/Button';
+import ProfileDelete from './Delete';
+import { useQuery } from '@apollo/client';
 
-import { GET_ME } from "../../graphql/queries";
+import { GET_ME } from '@/graphql/queries';
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -63,7 +63,8 @@ function Profile() {
       <div className="font-medium py-3 px-2">
         <p className="text-sm text-dark-light">{user.about}</p>
         <p className="text-xs text-dark-light mt-1 opacity-75">
-          <span className="font-bold">Joined:</span> {user.createdAt}
+          <span className="font-bold">Joined:</span>{' '}
+          {new Date(+user.createdAt).toDateString()}
         </p>
       </div>
     </>

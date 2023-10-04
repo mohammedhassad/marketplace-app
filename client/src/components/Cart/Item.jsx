@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import Button from "../UI/Button";
-import { removeItem, updateCart } from "./cart-helpers";
+import { useState } from 'react';
+import Button from '@/UI/Button';
+import { removeItem, updateCart } from './cart-helpers';
+import PropTypes from 'prop-types';
 
 function CartItem({ item, index, handleRemove }) {
   const [quantity, setQuantity] = useState(item.quantity);
@@ -43,10 +44,10 @@ function CartItem({ item, index, handleRemove }) {
       <div className="flex md:justify-center justify-between items-center">
         <div className="lg:pr-8 pr-4 flex items-center">
           <Button
-            className="!p-2 text-dark bg-light hover:bg-light-dark !rounded-r-none !shadow-none"
+            className="!p-2 text-dark bg-light hover:bg-light-dark !rounded-r-none"
             onClick={handleDecrement}
           >
-            <svg className="w-4 w-4 text-current" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-current" viewBox="0 0 24 24">
               <path fill="currentColor" d="M19,13H5V11H19V13Z" />
             </svg>
           </Button>
@@ -57,10 +58,10 @@ function CartItem({ item, index, handleRemove }) {
             onChange={() => {}}
           />
           <Button
-            className="!p-2 text-dark bg-light hover:bg-light-dark !rounded-l-none !shadow-none"
+            className="!p-2 text-dark bg-light hover:bg-light-dark !rounded-l-none"
             onClick={handleIncrement}
           >
-            <svg className="w-4 w-4 text-current" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-current" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
                 d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
@@ -80,7 +81,7 @@ function CartItem({ item, index, handleRemove }) {
             className="bg-light hover:bg-light-dark !p-2 !rounded-full text-dark"
             onClick={handleRemoveItem}
           >
-            <svg className="w-5 w-5 text-current" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-current" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
                 d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z"
@@ -92,5 +93,11 @@ function CartItem({ item, index, handleRemove }) {
     </div>
   );
 }
+
+CartItem.propTypes = {
+  item: PropTypes.object,
+  index: PropTypes.number,
+  handleRemove: PropTypes.func,
+};
 
 export default CartItem;

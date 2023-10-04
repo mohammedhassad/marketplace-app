@@ -1,6 +1,9 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 function InputField({ label, logo, field, form, ...rest }) {
+  console.log(field);
+
   return (
     <div className="w-full mb-5">
       <label
@@ -14,11 +17,18 @@ function InputField({ label, logo, field, form, ...rest }) {
           {logo}
         </div>
         <input
-          className={`w-full leading-7 -ml-10 pl-10 pr-3 py-2 rounded-lg border-b-2 bg-light placeholder:text-dark-light text-dark-darkest ${
-            form.touched[field.name] && form.errors[field.name]
-              ? "!border-danger focus:!border-info"
-              : "!border-light focus:!border-info"
-          }`}
+          className={cn(
+            'w-full leading-7 -ml-10 pl-10 pr-3 py-2 rounded-md border-b-2 bg-light placeholder:text-dark-light text-dark',
+
+            {
+              'border-danger focus:border-primary':
+                form.touched[field.name] && form.errors[field.name],
+            },
+            {
+              'border-light focus:border-primary':
+                !form.touched[field.name] || !form.errors[field.name],
+            }
+          )}
           {...field}
           {...rest}
         />
@@ -31,5 +41,12 @@ function InputField({ label, logo, field, form, ...rest }) {
     </div>
   );
 }
+
+InputField.propTypes = {
+  field: PropTypes.object,
+  form: PropTypes.object,
+  label: PropTypes.string,
+  logo: PropTypes.element,
+};
 
 export default InputField;

@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from "react";
-import { Transition, Dialog } from "@headlessui/react";
-import Button from "../UI/Button";
-import { useMutation } from "@apollo/client";
-import { DELETE_SHOP } from "../../graphql/mutations";
+import { useMutation } from '@apollo/client';
+import { Dialog, Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
+import { Fragment, useState } from 'react';
+import { DELETE_SHOP } from '@/graphql/mutations';
+import Button from '@/UI/Button';
 
 function ShopDelete({ shop, reload }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +65,7 @@ function ShopDelete({ shop, reload }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800 w-2/4">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-lg rounded-2xl">
                 <div className="w-full h-full text-center">
                   <div className="flex h-full flex-col justify-between">
                     <svg
@@ -99,7 +100,7 @@ function ShopDelete({ shop, reload }) {
                       </Button>
                       <Button
                         type="button"
-                        className="text-danger bg-white hover:bg-light w-1/3"
+                        className="text-danger border border-danger bg-white hover:bg-danger-light w-1/3"
                         onClick={closeModal}
                       >
                         Cancel
@@ -115,5 +116,10 @@ function ShopDelete({ shop, reload }) {
     </>
   );
 }
+
+ShopDelete.propTypes = {
+  shop: PropTypes.object,
+  reload: PropTypes.func,
+};
 
 export default ShopDelete;

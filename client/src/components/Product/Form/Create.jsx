@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
-import { CREATE_PRODUCT } from "../../../graphql/mutations";
-import Button from "../../UI/Button";
-import Alert from "../../UI/Alert";
-import ProductForm from "./Form";
+import { CREATE_PRODUCT } from '@/graphql/mutations';
+import Button from '@/UI/Button';
+import Alert from '@/UI/Alert';
+import ProductForm from './Form';
 
 const initialValues = {
-  name: "",
-  description: "",
-  category: "",
-  quantity: "",
-  price: "",
+  name: '',
+  description: '',
+  category: '',
+  quantity: '',
+  price: '',
   image: {},
 };
 
@@ -29,7 +29,7 @@ const validationSchema = Yup.object().shape({
 
 function ProductFormCreate() {
   const { shopId } = useParams();
-  const [alert, setAlert] = useState({ message: "", variant: "" });
+  const [alert, setAlert] = useState({ message: '', variant: '' });
   const [createProduct] = useMutation(CREATE_PRODUCT);
 
   const handleSubmit = async (values, errors) => {
@@ -45,8 +45,8 @@ function ProductFormCreate() {
       if (data) {
         errors.resetForm();
         setAlert({
-          message: "Product Created successfully!",
-          variant: "success",
+          message: 'Product Created successfully!',
+          variant: 'success',
         });
       }
     } catch (err) {
@@ -54,7 +54,7 @@ function ProductFormCreate() {
         const { graphQLErrors } = err;
         const { extensions, message } = graphQLErrors[0];
 
-        setAlert({ message: message, variant: "danger" });
+        setAlert({ message: message, variant: 'danger' });
 
         console.log({ ...err });
 
@@ -92,17 +92,17 @@ function ProductFormCreate() {
             {/* Save Changes && Cacel */}
             <ProductForm />
 
-            <div className="flex items-center w-full pt-3">
+            <div className="flex items-center justify-end gap-3 w-full mt-6">
               <Button
                 type="submit"
-                className="!flex bg-info hover:bg-info-dark text-white"
+                className="bg-primary hover:bg-primay-dark text-white min-w-[150px]"
               >
                 Create
               </Button>
-              <Link to={`/seller/shop/${shopId}/edit`} className="ml-auto">
+              <Link to={`/seller/shop/${shopId}/edit`}>
                 <Button
                   type="button"
-                  className="!flex border-2 border-info hover:bg-info-light text-info"
+                  className="border border-primary hover:bg-info-light text-primary min-w-[150px]"
                 >
                   Cancel
                 </Button>

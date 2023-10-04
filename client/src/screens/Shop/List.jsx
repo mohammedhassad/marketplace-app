@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { GET_SHOPS } from '../../graphql/queries';
+import { GET_SHOPS } from '@/graphql/queries';
 
 function ScreensShopList() {
   const [shops, setShops] = useState([]);
@@ -30,7 +30,7 @@ function ScreensShopList() {
       <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-4 gap-y-8">
         {shops.map((shop, index) => (
           <div key={index}>
-            <div className="cursor-pointer bg-white flex items-center justify-center flex-col py-8 rounded-lg shadow-lg">
+            <div className="cursor-pointer bg-white flex items-center justify-center flex-col py-8 rounded-lg shadow-sm">
               <Link to={`/shops/${shop?._id}`}>
                 <div className="mb-4 w-36 h-36 rounded-full">
                   <img
