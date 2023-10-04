@@ -6,11 +6,11 @@ import * as Yup from 'yup';
 
 import { GET_ME } from '@/graphql/queries';
 import { UPDATE_ME } from '@/graphql/mutations';
-import InputField from '@/UI/Input/Field';
-import Button from '@/UI/Button';
-import Alert from '@/UI/Alert';
-import Textarea from '@/UI/Textarea';
-import { updateUser } from '@/Auth/auth-helpers';
+import InputField from '@/components/UI/Input/Field';
+import Button from '@/components/UI/Button';
+import Alert from '@/components/UI/Alert';
+import Textarea from '@/components/UI/Textarea';
+import { updateUser } from '@/components/Auth/auth-helpers';
 
 const initialValues = {
   name: '',

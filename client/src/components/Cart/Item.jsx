@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 import { removeItem, updateCart } from './cart-helpers';
 import PropTypes from 'prop-types';
 

@@ -3,9 +3,9 @@ import { Field, Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 
 import { LIST_CATEGORIES } from '@/graphql/queries';
-import Button from '@/UI/Button';
-import InputSearch from '@/UI/Input/Search';
-import Select from '@/UI/Select';
+import Button from '@/components/UI/Button';
+import InputSearch from '@/components/UI/Input/Search';
+import Select from '@/components/UI/Select';
 
 import PropTypes from 'prop-types';
 

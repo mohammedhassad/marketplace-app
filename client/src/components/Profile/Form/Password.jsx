@@ -1,9 +1,9 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-import InputField from '@/UI/Input/Field';
-import Button from '@/UI/Button';
-import {} from '@/Auth/auth-helpers';
+import InputField from '@/components/UI/Input/Field';
+import Button from '@/components/UI/Button';
+import {} from '@/components/Auth/auth-helpers';
 
 const initialValues = {
   oldPassword: '',

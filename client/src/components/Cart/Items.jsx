@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 import { Link } from 'react-router-dom';
 import CartItem from './Item';
 import { getCart } from './cart-helpers';

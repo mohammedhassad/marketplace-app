@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-import InputField from '@/UI/Input/Field';
-import Button from '@/UI/Button';
-import Alert from '@/UI/Alert';
+import InputField from '@/components/UI/Input/Field';
+import Button from '@/components/UI/Button';
+import Alert from '@/components/UI/Alert';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '@/graphql/mutations';
 

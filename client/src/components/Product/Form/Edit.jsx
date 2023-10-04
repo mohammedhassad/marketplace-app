@@ -6,9 +6,9 @@ import * as Yup from 'yup';
 
 import { GET_PRODUCT } from '@/graphql/queries';
 import { UPDATE_PRODUCT } from '@/graphql/mutations';
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 import ProductForm from './Form';
-import Alert from '@/UI/Alert';
+import Alert from '@/components/UI/Alert';
 
 const initialValues = {
   name: '',

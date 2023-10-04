@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import PropTypes from 'prop-types';
 import { Fragment, useState } from 'react';
 import { DELETE_SHOP } from '@/graphql/mutations';
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 
 function ShopDelete({ shop, reload }) {
   const [isOpen, setIsOpen] = useState(false);

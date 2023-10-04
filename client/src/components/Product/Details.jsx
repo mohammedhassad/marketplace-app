@@ -3,9 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FaTag } from 'react-icons/fa6';
 
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 import { GET_PRODUCT } from '@/graphql/queries';
-import { addItem } from '@/Cart/cart-helpers';
+import { addItem } from '@/components/Cart/cart-helpers';
 
 function ProductsDetails() {
   const navigate = useNavigate();

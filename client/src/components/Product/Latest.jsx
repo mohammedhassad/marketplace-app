@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { LIST_LATEST_PRODUCTS } from '@/graphql/queries';
-import Button from '@/UI/Button';
-import { addItem } from '@/Cart/cart-helpers';
+import Button from '@/components/UI/Button';
+import { addItem } from '@/components/Cart/cart-helpers';
 
 function ProductLatest() {
   const navigate = useNavigate();

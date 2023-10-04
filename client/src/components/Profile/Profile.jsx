@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 import ProfileDelete from './Delete';
 import { useQuery } from '@apollo/client';
 

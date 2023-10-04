@@ -1,8 +1,8 @@
 import { Field } from 'formik';
 
-import InputField from '@/UI/Input/Field';
-import Textarea from '@/UI/Textarea';
-import UploadPhoto from '@/UI/UploadPhoto';
+import InputField from '@/components/UI/Input/Field';
+import Textarea from '@/components/UI/Textarea';
+import UploadPhoto from '@/components/UI/UploadPhoto';
 
 function ProductForm() {
   return (

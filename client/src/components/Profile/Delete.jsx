@@ -1,9 +1,9 @@
 import { Fragment, useState } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
-import Button from '@/UI/Button';
+import Button from '@/components/UI/Button';
 import { useMutation } from '@apollo/client';
 import { DELETE_ME } from '@/graphql/mutations';
-import { clearJWT } from '@/Auth/auth-helpers';
+import { clearJWT } from '@/components/Auth/auth-helpers';
 import { useNavigate } from 'react-router-dom';
 
 function ProfileDelete() {

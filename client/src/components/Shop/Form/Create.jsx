@@ -5,8 +5,8 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import { CREATE_SHOP } from '@/graphql/mutations';
-import Button from '@/UI/Button';
-import Alert from '@/UI/Alert';
+import Button from '@/components/UI/Button';
+import Alert from '@/components/UI/Alert';
 import ShopForm from './Form';
 
 const initialValues = {

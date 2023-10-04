@@ -5,12 +5,10 @@ import { Formik, Form, Field } from 'formik';
 import { useLazyQuery } from '@apollo/client';
 import { LOGIN_USER } from '@/graphql/queries';
 
-import InputField from '@/UI/Input/Field';
-import Button from '@/UI/Button';
+import InputField from '@/components/UI/Input/Field';
+import Button from '@/components/UI/Button';
 import { authenticate } from '../auth-helpers';
-import Alert from '@/UI/Alert';
-
-import { BsInfoCircle } from 'react-icons/bs';
+import Alert from '@/components/UI/Alert';
 
 const initialValues = {
   email: 'demo@example.com',
@@ -76,7 +74,21 @@ function AuthFormLogin() {
           {/* Alert */}
           <div className="rounded-md bg-primary-light p-4 mb-4">
             <p className="flex  items-center gap-3 text-sm font-medium text-black">
-              <BsInfoCircle size={22} className="text-primary" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-5 h-5 text-primary"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                />
+              </svg>
+
               <span>
                 Use <strong>demo@example.com</strong> and{' '}
                 <strong>unsafepassword</strong> to sign in
