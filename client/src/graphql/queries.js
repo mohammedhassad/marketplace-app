@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
   query loginUser($email: String!, $password: String!) {
@@ -120,7 +120,7 @@ export const LIST_LATEST_PRODUCTS = gql`
 `;
 
 export const LIST_RELATED_PRODUCTS = gql`
-  query listRelatedProducts($productId: ID!) {
+  query listRelatedProducts($productId: String!) {
     listRelatedProducts(productId: $productId) {
       _id
       name

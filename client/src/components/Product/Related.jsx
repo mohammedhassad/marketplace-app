@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { LIST_RELATED_PRODUCTS } from '@/graphql/queries';
+import { LIST_RELATED_PRODUCTS } from '../../graphql/queries';
 
 function ProductRelated() {
   const { productId } = useParams();
   const [products, setProducts] = useState([]);
   const { loading, data, refetch } = useQuery(LIST_RELATED_PRODUCTS, {
-    variables: { productId: productId },
+    variables: { productId },
   });
 
   useEffect(() => {
@@ -18,9 +18,9 @@ function ProductRelated() {
     }
   }, [data, loading, refetch]);
 
-  if (!data) {
-    return;
-  }
+  // if (!data) {
+  //   return;
+  // }
 
   return (
     <div

@@ -31,14 +31,13 @@ function ShopForm() {
       </Field>
 
       {/* Description */}
-      <Field name="name">
+      <Field name="description">
         {({ field, form }) => (
           <Textarea
             field={field}
             form={form}
             label="Description"
             placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit..."
-            name="description"
             logo={
               <svg className="w-5 h-5 text-dark-light" viewBox="0 0 24 24">
                 <path

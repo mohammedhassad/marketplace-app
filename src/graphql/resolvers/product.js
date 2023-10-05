@@ -79,14 +79,8 @@ export default {
           throw new ApolloError('Validation Error.', 400, { error });
         }
 
-        const {
-          name,
-          description,
-          category,
-          quantity,
-          price,
-          image,
-        } = inputProduct;
+        const { name, description, category, quantity, price, image } =
+          inputProduct;
 
         let newProduct = new Product({
           name,
@@ -120,14 +114,8 @@ export default {
           throw new ApolloError('Validation Error.', 400, { error });
         }
 
-        const {
-          name,
-          description,
-          category,
-          quantity,
-          price,
-          image,
-        } = inputProduct;
+        const { name, description, category, quantity, price, image } =
+          inputProduct;
 
         let updateProduct = extend(product, {
           name,
