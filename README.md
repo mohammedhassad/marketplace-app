@@ -5,20 +5,20 @@ An online marketplace application that facilitates seamless interactions between
 ## Features
 
 - **User Accounts with Seller Access**
-    - Users can register for accounts, and authentication is handled securely.
-    - Users can upgrade their accounts to seller status, enabling them to list and manage products.
+    - Users can register for accounts, and authentication is handled securely.
+    - Users can upgrade their accounts to seller status, enabling them to list and manage products. 
 - **Shop Management**
-    - Sellers can create their own online shops, customizing them with relevant information and branding.
-    - Sellers have access to a dashboard where they can monitor and manage their shop activities.
+    - Sellers can create their own online shops, customizing them with relevant information and branding.
+    - Sellers have access to a dashboard where they can monitor and manage their shop activities. 
 - **Product Management**
-    - Sellers can add, edit, and delete product listings.
-    - Each product can have detailed information, including images, descriptions, and pricing.
+    - Sellers can add, edit, and delete product listings.
+    - Each product can have detailed information, including images, descriptions, and pricing.  
 - **Product Search**
-    - Users can search for products based on their names and categories.
-    - The application provides intelligent suggestions based on user input to enhance the search experience.
+    - Users can search for products based on their names and categories.
+    - The application provides intelligent suggestions based on user input to enhance the search experience. 
 - **Shopping Cart**
-    - Buyers can add products to their shopping cart for easy checkout.
-    - Users can view and manage the contents of their shopping cart before finalizing their purchase.
+    - Buyers can add products to their shopping cart for easy checkout.
+    - Users can view and manage the contents of their shopping cart before finalizing their purchase.
 
 ## Getting Started
 
@@ -38,7 +38,7 @@ A step by step series of examples that tell you how to get a development env run
 1. **Clone the repository:**
 
 ```bash
- git clone https://github.com/mohammedhassad/marketplace-app.git
+git clone https://github.com/mohammedhassad/marketplace-app.git
 ```
 
 2. **Install dependencies:**
@@ -53,16 +53,16 @@ A step by step series of examples that tell you how to get a development env run
 
 3. **Set up the environment variables:**
 
-Create a `.env` file in the root directory and set the required environment variables. You can use the provided `example.env` as a template.
+   Create a `.env` file in the root directory and set the required environment variables. You can use the provided `example.env` as a template.
 
 4. **Run the application:**
 
 ```bash
- cd marketplace-app
- npm start  # The application will be accessible at http://localhost:5000
+cd marketplace-app
+npm start  # The application will be accessible at http://localhost:5000
 
-  cd client
-  npm start  # The application will be accessible at http://localhost:5173
+cd client
+npm start  # The application will be accessible at http://localhost:5173
 ```
 
 ## Tech Stack
@@ -91,6 +91,7 @@ marketplace-app/
 |-- package.json       # Node.js dependencies and scripts
 |-- README.md          # Project documentation
 |-- example            # Example environment variable file
+|-- LICENSE            # License file for the project
 ```
 
 ## Contributing
