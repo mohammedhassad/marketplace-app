@@ -24,7 +24,7 @@ function ScreensShop() {
   });
 
   useEffect(() => {
-    document.title = 'Shop';
+    document.title = 'Shop - Marketplace App';
   }, []);
 
   useEffect(() => {

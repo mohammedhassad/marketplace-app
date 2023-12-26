@@ -4,7 +4,7 @@ import ProductRelated from '@/components/Product/Related';
 
 function ScreensProduct() {
   useEffect(() => {
-    document.title = 'Product';
+    document.title = 'Product - Marketplace App';
   }, []);
 
   return (

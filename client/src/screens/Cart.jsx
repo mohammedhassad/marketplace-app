@@ -3,7 +3,7 @@ import CartItems from '@/components/Cart/Items';
 
 function ScreensCart() {
   useEffect(() => {
-    document.title = 'Shopping Cart';
+    document.title = 'Shopping Cart - Marketplace App';
   }, []);
 
   return (

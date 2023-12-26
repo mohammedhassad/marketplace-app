@@ -13,7 +13,7 @@ function ScreensShopMyList() {
   });
 
   useEffect(() => {
-    document.title = 'My Shops';
+    document.title = 'My Shops - Marketplace App';
   }, []);
 
   useEffect(() => {

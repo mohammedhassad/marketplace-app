@@ -3,7 +3,7 @@ import ShopFormCreate from '@/components/Shop/Form/Create';
 
 function ScreensShopCreate() {
   useEffect(() => {
-    document.title = 'Create Shop';
+    document.title = 'Create Shop - Marketplace App';
   }, []);
 
   return (

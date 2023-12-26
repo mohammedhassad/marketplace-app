@@ -14,7 +14,7 @@ function ScreensShopEdit() {
   });
 
   useEffect(() => {
-    document.title = 'Edit Shop';
+    document.title = 'Edit Shop - Marketplace App';
   }, []);
 
   useEffect(() => {

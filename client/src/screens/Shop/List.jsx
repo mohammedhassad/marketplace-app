@@ -9,7 +9,7 @@ function ScreensShopList() {
   const { data, loading, refetch } = useQuery(GET_SHOPS);
 
   useEffect(() => {
-    document.title = 'All Shops';
+    document.title = 'All Shops - Marketplace App';
   }, []);
 
   useEffect(() => {

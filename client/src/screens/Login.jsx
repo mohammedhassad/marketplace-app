@@ -4,7 +4,7 @@ import AuthFormLogin from '@/components/Auth/Form/Login';
 
 function ScreensLogin() {
   useEffect(() => {
-    document.title = 'Login';
+    document.title = 'Login - Marketplace App';
   }, []);
 
   return (

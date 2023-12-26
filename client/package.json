@@ -1,5 +1,6 @@
 {
-  "name": "client-v2",
+  "name": "client",
+  "author": "mohammed hassad",
   "private": true,
   "version": "0.0.0",
   "type": "module",

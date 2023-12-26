@@ -17,7 +17,7 @@ function ScreensHome() {
   });
 
   useEffect(() => {
-    document.title = 'Home';
+    document.title = 'Home - Marketplace App';
   }, []);
 
   useEffect(() => {

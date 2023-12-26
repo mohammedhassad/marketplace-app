@@ -4,7 +4,7 @@ import AuthFormRegister from '@/components/Auth/Form/Register';
 
 function ScreensRegister() {
   useEffect(() => {
-    document.title = 'Register';
+    document.title = 'Register - Marketplace App';
   }, []);
 
   return (

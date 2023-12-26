@@ -3,7 +3,7 @@ import ProductFormCreate from '@/components/Product/Form/Create';
 
 function ScreensProductCreate() {
   useEffect(() => {
-    document.title = 'Create Product';
+    document.title = 'Create Product - Marketplace App';
   }, []);
 
   return (

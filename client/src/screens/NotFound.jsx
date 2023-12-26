@@ -6,7 +6,7 @@ const ScreensNotFound = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Page Not Found';
+    document.title = 'Page Not Found - Marketplace App';
   }, []);
 
   return (

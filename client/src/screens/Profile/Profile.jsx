@@ -3,7 +3,7 @@ import Profile from '@/components/Profile/Profile';
 
 function ScreensProfile() {
   useEffect(() => {
-    document.title = 'Profile';
+    document.title = 'Profile - Marketplace App';
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import ProfileFormPassword from '@/components/Profile/Form/Password';
 
 function ScreensProfileEdit() {
   useEffect(() => {
-    document.title = 'Edit Profile';
+    document.title = 'Edit Profile - Marketplace App';
   }, []);
 
   return (

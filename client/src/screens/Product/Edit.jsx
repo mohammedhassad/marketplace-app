@@ -3,7 +3,7 @@ import ProductFormEdit from '@/components/Product/Form/Edit';
 
 function ScreensProductEdit() {
   useEffect(() => {
-    document.title = 'Edit Product';
+    document.title = 'Edit Product - Marketplace App';
   }, []);
 
   return (
