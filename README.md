@@ -90,7 +90,7 @@ marketplace-app/
 |-- index.js           # Project entry point
 |-- package.json       # Node.js dependencies and scripts
 |-- README.md          # Project documentation
-|-- example            # Example environment variable file
+|-- example.env        # Example environment variable file
 |-- LICENSE            # License file for the project
 ```
 
